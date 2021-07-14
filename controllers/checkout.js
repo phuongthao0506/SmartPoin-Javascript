@@ -191,7 +191,7 @@ const checkoutSuccess = () => {
         html: showInfoSuccess(),
         confirmButtonColor: 'rgb(94 204 102)',
         confirmButtonText:
-            ' <a href="/" class="btn ">Xem thêm sản phẩm !</a>',
+            ' <a href="./index.html" class="btn ">Xem thêm sản phẩm !</a>',
         footer: `
         <p> Cảm ơn quý khách đã mua hàng tại Smart Point!!  </p>`
     })
