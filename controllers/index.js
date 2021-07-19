@@ -16,13 +16,33 @@ const showProducts = (arrData, keyword) => {
     if (arrData) {
         if (keyword) {
             arrData = filterItems(keyword, arrData);
+            if(arrData.length === 0){
+                
+                toastr.error(`Rất tiếc,Smart Point không tìm thấy kết quả nào phù hợp với từ khóa "${keyword}" !`,'Không tìm thấy sản phẩm')
+                html= `<h3> Rất tiếc,Smart Point không tìm thấy kết quả nào phù hợp với từ khóa "${keyword}" !  </h3>
+                                                <div class=" p-3 ">
+                                                <h5>Để tìm được kết quả chính xác hơn, bạn vui lòng:</h5>
+                                                <div>
+                                                <ul>
+                                                <li>Kiểm tra lỗi chính tả của từ khóa đã nhập</li>
+                                                <li>Thử lại bằng từ khóa khác</li>
+                                                <li>Thử lại bằng những từ khóa tổng quát hơn</li>
+                                                <li>Thử lại bằng những từ khóa ngắn gọn hơn</li>
+                                            </ul>
+                                                </div>
+                                               
+                                            </div>`
+                                            
+            }else{
+                toastr.success('',`Smart Point tìm thấy ${arrData.length} kết quả`)
+            }
         }
         arrData.forEach(product => {
             html += displayProduct(product);
         });
     }
     QS('#best-smartphone-container').innerHTML = html
-}
+    }
 
 // LẤY TỪ KHOÁ VÀ HIỂN THỊ DANH SÁCH KHI NHẤN NÚT TÌM KIẾM 
 const search = (selectorBtn,selectorInput) => {
@@ -240,5 +260,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
     changeQuantity(".btn-plus", 1)
     changeQuantity(".btn-sub", -1)
     quantityCart();
-    toastr.options = {"timeOut": "800"}
+    toastr.options = {"timeOut": "1200"}
 });
